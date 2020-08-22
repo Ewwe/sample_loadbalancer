@@ -1,0 +1,15 @@
+version: '3.5'
+
+
+services:
+  app2:
+    image: bitnami/nginx
+    volumes:
+      - /home/app2_test/php_app2/index.php:/app/index.php
+      - /home/app2_test/php_app2/app.conf:/opt/bitnami/nginx/conf/server_blocks/app.conf
+    ports:
+      - 8082:8080
+  php-app2:
+    image: bitnami/php-fpm:7.4
+    volumes:
+      - /home/app2_test/php_app2/index.php:/app/index.php
